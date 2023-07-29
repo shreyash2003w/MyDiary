@@ -1,0 +1,35 @@
+
+<%- include("partials/header");-%>
+
+
+<% if(username != null){ %>
+<h2 style="font-family: Arial, Helvetica, sans-serif;">Hello <%= username %></h2>
+<% } else {%>
+    <h1>Home</h1>
+
+    <% } %>
+<p>
+    <%=StartingContent %>
+</p>
+
+<% if( post!=null ){for(var i=post.length-1;i>=0;i--){ %>
+    <% const postTitle= post[i].title; %>
+    <% const content = post[i].content%>
+    <% const bytes = CryptoJS.AES.decrypt(postTitle,seckey); %>
+    <%  const postdata = bytes.toString(CryptoJS.enc.Utf8); %>
+
+    <% const  conbytes =  CryptoJS.AES.decrypt(content,seckey) %>
+    <% const contentdata = conbytes.toString(CryptoJS.enc.Utf8)   %>
+     
+ 
+
+    <h2> <%= postdata %></h2>
+    <p>
+        <%=  contentdata.substring(0,100) + "..." %> 
+        <a href="/post/<%= post[i]._id%>">Read More</a>
+    </p>
+  
+<% }} %>
+
+
+<%- include("partials/footer");-%>
