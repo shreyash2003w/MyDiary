@@ -4,7 +4,7 @@ const express = require("express");
 require("dotenv").config();
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
-var path = require('path');
+
 const _ = require("lodash");
 const mongoose = require("mongoose");
 const session = require("express-session");
@@ -21,7 +21,7 @@ const postseckey = process.env.SECPOSTKEY;
 const app = express();
 const PORT = 3000 || process.env.PORT;
 app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, 'views'));
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 app.use(cors());
