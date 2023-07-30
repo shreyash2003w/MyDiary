@@ -19,7 +19,7 @@ const contactContent =
 const postseckey = process.env.SECPOSTKEY;
 const app = express();
 const PORT = 3000 || process.env.PORT;
-app.set("view engine", "ejs");
+app.set('view engine', 'ejs');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
